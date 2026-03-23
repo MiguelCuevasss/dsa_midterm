@@ -17,3 +17,17 @@ Para activar el shuffle tiene una complejidad O(n) porque recorre todos los nodo
 Para navegar siempre es O(1) porque siempre hace una instruccion independientemente de la cantidad de canciones, y para desactivar un shuffle siempre tiene un O(1) porque solo corre una instruccion.
 
 El resultado del profiler dice que la mayor cantidad de ocurrencias pasa en el for, debido a que hace un loop de varias cosas, el incremento de la memoria es solo al inicio ya que crea un espacio en memoria para hacer esa funcion, el tiempo de carga es relativamente poco debido a que la cantidad de canciones no es tan significativa.
+
+Como Clonar El Repo
+
+    1. git clone (Tu link SSH)
+
+Instalar dependencias
+
+    pip install memory-profiler
+
+Ejecutar el programa
+    Python main.py
+
+Ejecutar el profiling
+    Python -m memory profler main.py    
