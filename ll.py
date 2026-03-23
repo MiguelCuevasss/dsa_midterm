@@ -90,15 +90,15 @@ class Playlist:
             print(current, marker)
             current = current.next
 
-    @profile
-    def load_songs(self, songs: list[dict[str, str]]) -> float:
-        start_time = time.perf_counter()
+#    @profile
+#    def load_songs(self, songs: list[dict[str, str]]) -> float:
+#        start_time = time.perf_counter()
 
-        for song in songs:
-            self.append(song["name"], song["artist"], song["album"])
+#        for song in songs:
+#            self.append(song["name"], song["artist"], song["album"])
 
-        end_time = time.perf_counter()
-        return end_time - start_time
+#        end_time = time.perf_counter()
+#       return end_time - start_time
     
     def _get_nodes(self) -> list[Node]:
         nodes = []
