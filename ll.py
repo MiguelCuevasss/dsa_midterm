@@ -51,6 +51,14 @@ class Playlist:
         if self.current is None:
             return "La playlist está vacía."
 
+        if self.shuffle_on:
+            next_node = self.shuffle_forward.get(self.current)
+            if next_node is None:
+                return "No hay siguiente canción en shuffle."
+
+            self.current = next_node
+            return f"Reproduciendo: {self.current}"
+
         if self.current.next is None:
             return "Ya estás en la última canción."
 
@@ -124,3 +132,4 @@ class Playlist:
         self.shuffle_on = False
         self.shuffle_forward.clear()
         self.shuffle_backward.clear()
+    
