@@ -15,7 +15,6 @@ class Node:
     def __repr__(self) -> str:
         return f"{self.name} - {self.artist} ({self.album})"
 
-
 class Playlist:
     def __init__(self) -> None:
         self.head: Node | None = None
@@ -25,7 +24,7 @@ class Playlist:
 
         self.shuffle_on = False
         self.shuffle_forward: dict[Node, Node | None] = {}
-        self.suffle_backward: dict[Node, Node | None] = {}
+        self.shuffle_backward: dict[Node, Node | None] = {}
 
     def append(self, name: str, artist: str, album: str) -> None:
         new_node = Node(name, artist, album)
