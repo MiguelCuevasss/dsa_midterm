@@ -22,6 +22,10 @@ class Playlist:
         self.current: Node | None = None
         self.size: int = 0
 
+        self.shuffle_on = False
+        self.shuffle_forward: dict[Node, Node | None] = {}
+        self.suffle_backward: dict[Node, Node | None] = {}
+
     def append(self, name: str, artist: str, album: str) -> None:
         new_node = Node(name, artist, album)
 
@@ -79,3 +83,4 @@ class Playlist:
 
         end_time = time.perf_counter()
         return end_time - start_time
+    
