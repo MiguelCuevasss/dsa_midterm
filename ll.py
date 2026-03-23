@@ -69,6 +69,14 @@ class Playlist:
         if self.current is None:
             return "La playlist está vacía."
 
+        if self.shuffle_on:
+            prev_node = self.shuffle_backward.get(self.current)
+            if prev_node is None:
+                return "No hay canción anterior en shuffle."
+
+            self.current = prev_node
+            return f"Reproduciendo: {self.current}"
+
         if self.current.prev is None:
             return "Ya estás en la primera canción."
 
