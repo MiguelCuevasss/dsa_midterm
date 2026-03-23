@@ -1,5 +1,5 @@
 from __future__ import annotations
-from memory_profiler import profile
+#from memory_profiler import profile
 import time
 import random
 
@@ -90,7 +90,7 @@ class Playlist:
             print(current, marker)
             current = current.next
 
-    @profile
+#    @profile
     def load_songs(self, songs: list[dict[str, str]]) -> float:
         start_time = time.perf_counter()
 
