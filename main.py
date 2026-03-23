@@ -4,7 +4,6 @@ from songs import generate_songs
 
 def main() -> None:
     playlist = Playlist()
-
     songs = generate_songs()
 
     elapsed_time = playlist.load_songs(songs)
@@ -13,10 +12,23 @@ def main() -> None:
     print(f"Total de canciones: {playlist.size}")
     print()
 
-    print(playlist.play())      
-    print(playlist.next())      
-    print(playlist.next())      
-    print(playlist.previous())  
+    print("--- PRUEBA NORMAL ---")
+    print(playlist.play())
+    print(playlist.next())
+    print(playlist.next())
+    print(playlist.previous())
+    print()
+
+    print("--- SHUFFLE ON ---")
+    playlist.enable_shuffle()
+    print(playlist.next())
+    print(playlist.next())
+    print(playlist.previous())
+    print()
+
+    print("--- SHUFFLE OFF ---")
+    playlist.disable_shuffle()
+    print(playlist.play())
 
 
 if __name__ == "__main__":
