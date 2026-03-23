@@ -14,7 +14,6 @@ def generate_songs() -> list[dict[str, str]]:
 
     songs = []
 
-    # 🔁 Repetimos canciones reales hasta llegar a 100
     for i in range(100):
         name, artist, album = base_songs[i % len(base_songs)]
 
