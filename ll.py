@@ -119,3 +119,8 @@ class Playlist:
 
         if self.current is None:
             self.current = shuffled[0]
+
+    def disable_shuffle(self) -> None:
+        self.shuffle_on = False
+        self.shuffle_forward.clear()
+        self.shuffle_backward.clear()
