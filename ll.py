@@ -1,0 +1,70 @@
+from __future__ import annotations
+
+
+class Node:
+    def __init__(self, name: str, artist: str, album: str) -> None:
+        self.name: str = name
+        self.artist: str = artist
+        self.album: str = album
+
+        self.next: Node | None = None
+        self.prev: Node | None = None
+
+    def __repr__(self) -> str:
+        return f"{self.name} - {self.artist} ({self.album})"
+
+
+class Playlist:
+    def __init__(self) -> None:
+        self.head: Node | None = None
+        self.tail: Node | None = None
+        self.current: Node | None = None
+        self.size: int = 0
+
+    def append(self, name: str, artist: str, album: str) -> None:
+        new_node = Node(name, artist, album)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            self.current = new_node
+        else:
+            assert self.tail is not None
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+
+        self.size += 1
+
+    def play(self) -> str:
+        if self.current is None:
+            return "La playlist está vacía."
+        return f"Reproduciendo: {self.current}"
+
+    def next(self) -> str:
+        if self.current is None:
+            return "La playlist está vacía."
+
+        if self.current.next is None:
+            return "Ya estás en la última canción."
+
+        self.current = self.current.next
+        return f"Reproduciendo: {self.current}"
+
+    def previous(self) -> str:
+        if self.current is None:
+            return "La playlist está vacía."
+
+        if self.current.prev is None:
+            return "Ya estás en la primera canción."
+
+        self.current = self.current.prev
+        return f"Reproduciendo: {self.current}"
+
+    def print_playlist(self) -> None:
+        current = self.head
+
+        while current is not None:
+            marker = " <-- current" if current == self.current else ""
+            print(current, marker)
+            current = current.next
