@@ -1,5 +1,6 @@
 from __future__ import annotations
-
+from memory_profiler import profile
+import time
 
 class Node:
     def __init__(self, name: str, artist: str, album: str) -> None:
@@ -68,3 +69,13 @@ class Playlist:
             marker = " <-- current" if current == self.current else ""
             print(current, marker)
             current = current.next
+
+    @profile
+    def load_songs(self, songs: list[dict[str, str]]) -> float:
+        start_time = time.perf_counter()
+
+        for song in songs:
+            self.append(song["name"], song["artist"], song["album"])
+
+        end_time = time.perf_counter()
+        return end_time - start_time
