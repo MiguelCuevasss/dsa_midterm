@@ -84,3 +84,12 @@ class Playlist:
         end_time = time.perf_counter()
         return end_time - start_time
     
+    def _get_nodes(self) -> list[Node]:
+        nodes = []
+        current = self.head
+
+        while current is not None:
+            nodes.append(current)
+            current = current.next
+
+        return nodes
