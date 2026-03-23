@@ -1,6 +1,7 @@
 from __future__ import annotations
 from memory_profiler import profile
 import time
+import random
 
 class Node:
     def __init__(self, name: str, artist: str, album: str) -> None:
@@ -93,3 +94,28 @@ class Playlist:
             current = current.next
 
         return nodes
+
+    def enable_shuffle(self) -> None:
+
+        nodes = self._get_nodes()
+
+        if len(nodes) <= 1:
+            return
+
+        shuffled = nodes[:]
+        random.shuffle(shuffled)
+
+        self.shuffle_forward.clear()
+        self.shuffle_backward.clear()
+
+        for i in range(len(shuffled) - 1):
+            self.shuffle_forward[shuffled[i]] = shuffled[i + 1]
+            self.shuffle_backward[shuffled[i + 1]] = shuffled[i]
+
+        self.shuffle_forward[shuffled[-1]] = None
+        self.shuffle_backward[shuffled[0]] = None
+
+        self.shuffle_on = True
+
+        if self.current is None:
+            self.current = shuffled[0]
